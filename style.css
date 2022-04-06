@@ -1,0 +1,78 @@
+body {
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 125px;
+    border: 2px solid black;
+    text-align: right;
+}
+
+#top {
+    font-size: 30px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#bottom {
+    font-size: 26px;
+    padding-right: 10px;
+    padding-top: 40px;
+}
+
+.center {
+    margin: auto;
+}
+
+.grid-container {
+    display: grid;
+    background: rgb(245, 245, 245);
+    min-width: 320px;
+    max-width: 400px;
+    min-height: 500px;
+    max-height: 500px;
+    grid-template-columns: repeat(4, 100px);
+    text-align: center;
+    border: 2px solid rgb(196, 205, 214);
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.btn {
+    border: 1px solid rgb(196, 205, 214);
+    color: rgb(56, 56, 56);
+    font-size: 30px;
+}
+
+.btn span {
+    top: 35%;
+    position: relative;
+}
+
+div[data-action="operation"],
+div[data-action="parenthesis"] {
+    color: rgb(0, 140, 255);
+}
+
+div[data-action="clear"] {
+    color: rgb(223, 96, 96);
+}
+
+div[data-action="evaluate"] {
+    color: white;
+    background-color: rgb(71, 172, 255);
+}
+
+div[data-action="decimal"] {
+    font-size: 5px;
+}
+
+div[data-action="decimal"] span {
+    top: 50%;
+}
