@@ -2,10 +2,18 @@ body {
     font-family: 'Julius Sans One', sans-serif;
 }
 
+.hidden {
+    display: none;
+}
+
+.container {
+    width: min-content;
+}
+
 .display {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 396px;
     height: 125px;
     border: 2px solid black;
     text-align: right;
@@ -15,12 +23,14 @@ body {
     font-size: 30px;
     padding-right: 10px;
     padding-top: 10px;
+    min-height: 43px;
 }
 
 #bottom {
     font-size: 26px;
     padding-right: 10px;
-    padding-top: 40px;
+    padding-top: 35px;
+    min-height: 29px;
 }
 
 .center {
@@ -28,7 +38,9 @@ body {
 }
 
 .grid-container {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
     background: rgb(245, 245, 245);
     min-width: 320px;
     max-width: 400px;
@@ -45,14 +57,27 @@ body {
 }
 
 .btn {
+    width: 25%;
+    min-height: 20px;
+    box-sizing: border-box;
+    justify-content: space-between;
     border: 1px solid rgb(196, 205, 214);
-    color: rgb(56, 56, 56);
+    color: #828282;
     font-size: 30px;
 }
 
 .btn span {
     top: 35%;
     position: relative;
+}
+
+.btn:hover {
+    background-color: rgb(200, 200, 200);
+    cursor: pointer;
+}
+
+.btn[data-action="evaluate"]:hover {
+    background-color: rgb(55, 143, 214);
 }
 
 div[data-action="operation"],
@@ -65,14 +90,20 @@ div[data-action="clear"] {
 }
 
 div[data-action="evaluate"] {
+    flex-grow: 1;
     color: white;
     background-color: rgb(71, 172, 255);
 }
 
 div[data-action="decimal"] {
     font-size: 5px;
+    color: rgb(52, 52, 52);
 }
 
 div[data-action="decimal"] span {
     top: 50%;
+}
+
+div[data-action="delete"] {
+    color: rgb(100, 100, 100);
 }
