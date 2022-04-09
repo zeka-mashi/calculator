@@ -27,7 +27,11 @@ function updateDisplay() {
                     results = Function('return ' + expr)();
                 }
             }
-            elmBot.textContent = results;
+            try {
+                elmBot.textContent = results.toFixed(2).replace(/\.00$/, '');
+            } catch {
+                elmBot.textContent = results;
+            }
         }
     } else {
         merged_arr = calc_nums;
@@ -36,7 +40,8 @@ function updateDisplay() {
     if (calc_nums.length == 0) {
         elmBot.textContent = "0";
     } else if (calc_nums.length == 1) {
-        elmBot.textContent = calc_nums[0];
+        safe_num = Number(calc_nums[0]).toFixed(2).replace(/\.00$/, '');
+        elmBot.textContent = safe_num;
     }
 }
 
@@ -125,6 +130,11 @@ function evaluate() {
                 results = Function('return ' + expr)();
             }
         }
+        try {
+            results = results.toFixed(2).replace(/\.00$/, '');
+        } catch {
+            results = results;
+        }
         elmBot.textContent = results;
         calc_nums = [];
         calc_nums.push(results);
@@ -135,7 +145,7 @@ function evaluate() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function() {
     const buttons = document.getElementsByClassName("btn");
     for (let i = 0; i < buttons.length; i++) {
         if (buttons[i].dataset.action === "clear") {
@@ -147,9 +157,26 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (buttons[i].dataset.action === "value") {
             buttons[i].addEventListener("click", () => addValue(buttons[i].dataset.value));
         } else if (buttons[i].dataset.action === "decimal") {
-            buttons[i].addEventListener("click", () => addDecimal(buttons[i].dataset.value));
+            buttons[i].addEventListener("click", addDecimal);
         } else if (buttons[i].dataset.action === "evaluate") {
             buttons[i].addEventListener("click", evaluate);
         }
     }
 }, false);
+
+document.addEventListener("keydown", function(e) {
+    console.log(e);
+    if (e.key === "Escape") {
+        clear();
+    } else if (e.key === "Backspace") {
+        del();
+    } else if (["%", "/", "*", "-", "+"].indexOf(e.key) >= 0) {
+        addOperation(e.key);
+    } else if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].indexOf(e.key) >= 0) {
+        addValue(e.key);
+    } else if (e.key === ".") {
+        del();
+    } else if (["=", "Enter"].indexOf(e.key) >= 0) {
+        evaluate();
+    }
+});
