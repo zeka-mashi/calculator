@@ -26,19 +26,28 @@ body {
     background: white;
     border: 2px solid black;
     text-align: right;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 #top {
     font-size: 30px;
     padding-right: 10px;
     padding-top: 10px;
-    min-height: 43px;
+    min-height: 40px;
+}
+
+#mid {
+    color: rgb(255, 100, 100);
+    font-size: 26px;
+    padding-right: 10px;
+    min-height: 29px;
 }
 
 #bottom {
     font-size: 26px;
     padding-right: 10px;
-    padding-top: 35px;
+    padding-top: 10px;
     min-height: 29px;
 }
 
@@ -127,6 +136,7 @@ footer {
     background: #484848;
     padding: 15px 0;
     color: white;
+    font-weight: bold;
 }
 
 footer a {
