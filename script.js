@@ -146,7 +146,9 @@ function evaluate() {
     const elmMid = document.getElementById("mid");
     elmMid.textContent = ""
     const elmBot = document.getElementById("bottom");
-    if (calc_nums.length == calc_ops.length) {
+    if (calc_nums.length == 0) {
+        elmBot.textContent = "0";
+    } else if (calc_nums.length == calc_ops.length) {
         elmMid.textContent = "Missing arguments!";
         elmBot.textContent = "NaN";
     } else if (calc_nums.length === 1) {

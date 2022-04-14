@@ -15,7 +15,10 @@ body {
 
 .container {
     width: min-content;
-    padding-top: 20px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateY(-30%) translateX(-50%);
 }
 
 .display {
@@ -127,7 +130,7 @@ div[data-action="delete"] {
 }
 
 footer {
-    font-family: sans-serif;
+    font-family: 'Julius Sans One', sans-serif;
     margin: auto;
     width: 100%;
     text-align: center;
